@@ -1,27 +1,29 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-//Задача 10:
-//    Напишите программу, которая принимает на вход трехзначное число и на выходе показывает
-//    вторую цифру этого числа.
+﻿//Задача 13:Напишите программу, которая выводит третью (заданную) цифру заданного числа или сообщают, что третьей цыфры нет.
 using static System.Console;
-int getDigit()
+int digitCount(int digit)//подсчет кол-ва цыфр
 {
-    int digit;
-    do
+    int counter = 0;
+    while (digit != 0)
     {
-        WriteLine("Введите положительное целое трехзначное число: ");
-        digit = int.Parse(Console.ReadLine());
-    } while (digit < 100 || digit > 999);
-    return digit;
+        digit /= 10;
+        counter++;
+    }
+    return counter;
 }
-void showDigit(int digit)
+
+WriteLine("Enter the number");
+int digit = int.Parse(Console.ReadLine());
+WriteLine("What is the digit of this number?");
+int number = int.Parse(Console.ReadLine());
+
+
+if (digitCount(digit) <= -number || digitCount(digit) >= number)
 {
-    WriteLine ($"Вторая цифра этого числа: {(digit / 10) % 10}");
+    for (int i = 0; i < digitCount(digit); i++)
+    {
+        digit = (int)(digit / Math.Pow(10, (digitCount(digit) - number)));
+        digit %= 10;
+    }
+    Console.WriteLine($"{number} number is  {digit}");
 }
-string choice;
-do
-{
-    showDigit(getDigit());
-    WriteLine("Еще число? введите (да), чтобы продолжить");
-    choice = Console.ReadLine();
-}while (choice =="да");
+else Console.WriteLine($"{number} number is not included {digit}");
