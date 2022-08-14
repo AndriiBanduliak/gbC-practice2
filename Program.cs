@@ -1,6 +1,6 @@
 ﻿//Задача 13:Напишите программу, которая выводит третью (заданную) цифру заданного числа или сообщают, что третьей цыфры нет.
 using static System.Console;
-int digitCount(int digit)//подсчет кол-ва цыфр
+int digitCount(int digit)//подсчет кол-ва цифр
 {
     int counter = 0;
     while (digit != 0)
